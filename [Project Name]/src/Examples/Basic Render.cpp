@@ -10,7 +10,8 @@
 /// This will called First
 /// Initialize any variables here
 void ProjectLayer::Attach() {
-
+	// Sets the background colour
+	Nebula::RenderCommand::SetClearColour({ 0.1f, 0.1f, 0.1f, 1.0f });
 }
 
 /// This will called Last
@@ -31,12 +32,15 @@ void ProjectLayer::Render() {
 	// Clears the Screen
 	Nebula::RenderCommand::Clear();
 
-	// Sets the background colour
-	Nebula::RenderCommand::SetClearColour({ 0.1f, 0.1f, 0.1f, 1.0f });
+	// Rendering
+	Nebula::Renderer2D::BeginScene(Camera); // Must always start with begin scene.
+	Nebula::Renderer2D::Draw(NB_QUAD, Nebula::mat4(1.0f), Nebula::vec4(1.0f)); // Render the quad at pos (0, 0) with white colour
+	Nebula::Renderer2D::EndScene(); // Must always end the scene to render
 
-	// Render a Quad
+	// Sometimes you might want to Draw Something on top
+	// You can do this using another begin/end scene
 	Nebula::Renderer2D::BeginScene(Camera);
-	Nebula::Renderer2D::Draw(NB_QUAD, Nebula::mat4(1.0f), Nebula::vec4(1.0f));
+	Nebula::Renderer2D::Draw(NB_QUAD, Nebula::translate(Nebula::vec3(1, 1, 0.1)), Nebula::vec4(1.0f));
 	Nebula::Renderer2D::EndScene();
 }
 
@@ -45,7 +49,7 @@ void ProjectLayer::ImGuiRender() {
 
 }
 
-/// Called on any Event
+/// Called on any Event such as window resize
 void ProjectLayer::OnEvent(Nebula::Event& e) {
 	// Create Event Dispatcher
 	Nebula::Dispatcher dispatcher(e);

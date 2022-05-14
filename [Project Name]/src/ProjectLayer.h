@@ -2,6 +2,13 @@
 
 #include <Nebula.h>
 
+/*
+	THE MAIN IMPLEMENTATION WILL
+	BE DONE USING LAYERS LIKE THIS ONE
+*/
+
+// ProjectLayer can be called whatever you like,
+// But must be derived from Nebula::Layer
 class ProjectLayer : public Nebula::Layer {
 public:
 	/// Can be Used to Initialize variables
@@ -28,10 +35,10 @@ public:
 	/// Use to Render onto Screen
 	void Render() override;
 
-	/// Use to Render Any ImGui items
+	/// Use to Render ImGui
 	void ImGuiRender() override;
 
-	/// Called on any Event
+	/// Called on any Event such as window resize
 	void OnEvent(Nebula::Event& e) override;
 private:
 	/// Will be Called When Window is Resized.
