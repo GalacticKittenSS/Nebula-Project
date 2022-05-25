@@ -1,4 +1,3 @@
---include "./vendor/premake/premake_customization/solution_items.lua"
 include "Dependencies.lua"
 
 workspace "[Project Name]"
@@ -20,6 +19,7 @@ group "Dependencies"
 	include "Nebula/Nebula/Modules/GLad"
 	include "Nebula/Nebula/Modules/ImGui"
 	include "Nebula/Nebula/Modules/yaml-cpp"
+	include "Nebula/Nebula/Modules/FreetypeGL"
 group ""
 
 --NEBULA

@@ -40,7 +40,9 @@ void ProjectLayer::Render() {
 	// Sometimes you might want to Draw Something on top
 	// You can do this using another begin/end scene
 	Nebula::Renderer2D::BeginScene(Camera);
-	Nebula::Renderer2D::Draw(NB_QUAD, Nebula::translate(Nebula::vec3(1, 1, 0.1)), Nebula::vec4(1.0f));
+	// There a few different items you can draw
+	Nebula::Renderer2D::Draw(NB_QUAD, Nebula::translate(Nebula::vec3(1, 1, 0.1)), Nebula::vec4(1.0f)); // Like a quad
+	Nebula::Renderer2D::Draw(NB_CIRCLE, Nebula::translate(Nebula::vec3(-1, -1, 0.1)), Nebula::vec4(1.0f)); // or a circle
 	Nebula::Renderer2D::EndScene();
 }
 
