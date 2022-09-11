@@ -51,4 +51,6 @@ private:
 	// Orthagraphic Camera used for Rendering
 	// Must be initialised here as it has no default constructor
 	Nebula::OrthographicCamera Camera = { -16.0f, 16.0f, -9.0f, 9.0f };
+
+	Nebula::Ref<Nebula::Scene> Scene;
 };

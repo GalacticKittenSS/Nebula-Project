@@ -11,49 +11,34 @@
 	INSTEAD
 */
 
-// This is the application that handles window class automatically.
-// The name can be different, however must derive from Nebula::Application
-class ProjectApplication : public Nebula::Application {
-public:
-	ProjectApplication(Nebula::ApplicationCommandLineArgs args) : Application("New Nebula Project", args) {
-				/// TO CREATE A LAYER
+// Inorder to start using the application, 
+// you must return your app in the following function
+namespace Nebula {
+	Application* CreateApplication(ApplicationCommandLineArgs args) {
+		// You will need 
+		ApplicationSpecification spec;
+		spec.CommandLineArgs = args;
+		spec.Name = "New Nebula Project";
+		
+		// This is the application that handles window class automatically.
+		Application* app = new Application(spec);
 		
 		// Pushing a layer will activate that layer and 
 		// will call basic functions associated with the layer
-		PushLayer(new ProjectLayer());
-		
-						// OR
-		// You can use a variable to initialize and push a layer
-		// This can be useful if you want to pop or delete a layer
-		/*
-			Layer = new ProjectLayer();
-			PushOverlay(Layer);
-		*/
-	
-		// If you no longer want to call the class functions, pop the layer
-		// You will need a pointer to the layer to do so.
-		/*
-			PopLayer(Layer);
-		*/
+		app->PushLayer(new ProjectLayer());
 
 		// If you want to layer to be rendered last even if you push one after
 		// Use PushOverlay. This can be useful for rendering on top or dealing with events
 		/*
 			PushOverlay(new ProjectLayer());
 		*/
-	}
 
-	~ProjectApplication() { }
-private:
-	// This layer does not need to be deleted.
-	// It is automatically done
-	ProjectLayer* Layer;
-};
+		// If you no longer want to call the class functions, pop the layer
+		// You will need a pointer to the layer to do so.
+		/*
+			PopLayer(Layer);
+		*/
 
-// Inorder to start using the application, 
-// you must return your custom app in the following function
-namespace Nebula {
-	Application* CreateApplication(ApplicationCommandLineArgs args) {
-		return new ProjectApplication(args);
+		return app;
 	}
 }
